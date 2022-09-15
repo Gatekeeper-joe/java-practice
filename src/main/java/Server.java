@@ -7,6 +7,11 @@ import java.net.Socket;
 
 public class Server {
 
+    /**
+     * 実行するとport10880上で待受け、アクセスしてきたクライアントの情報をコンソールに出力
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         var server = new ServerSocket(10880);
         for (;;) {
