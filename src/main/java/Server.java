@@ -13,24 +13,24 @@ public class Server {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        var server = new ServerSocket(10880);
+        ServerSocket server = new ServerSocket(10880);
         for (;;) {
             try(Socket soc = server.accept();
-                var isr = new InputStreamReader(soc.getInputStream());
-                var bur = new BufferedReader(isr);
-                var w = new PrintWriter(soc.getOutputStream()))
+                InputStreamReader isr = new InputStreamReader(soc.getInputStream());
+                BufferedReader bur = new BufferedReader(isr);
+                PrintWriter w = new PrintWriter(soc.getOutputStream()))
             {
                 System.out.println("connected from " + soc.getInetAddress());
                 bur.lines()
                         .takeWhile(line -> !line.isEmpty())
                         .forEach(System.out::println);
                 w.println("""
-                          HTTP/1.1 200 OK
-                          Content-Type: text/html
+                            HTTP/1.1 200 OK
+                            ontent-Type: text/html
 
-                          <html><head><title>Hello</title></head>
-                          <body><h1>Hello</h1>It works!</body></html>
-                          """);
+                            <html><head><title>Hello</title></head>
+                            <body><h1>Hello</h1>It works!</body></html>
+                            """);
             }
         }
     }
