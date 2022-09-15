@@ -25,8 +25,8 @@ public class Server {
             {
                 System.out.println("connected from " + soc.getInetAddress());
                 bur.lines()
-                        .takeWhile(line -> !line.isEmpty())
-                        .forEach(System.out::println);
+                    .takeWhile(line -> !line.isEmpty())
+                    .forEach(System.out::println);
                 w.println("""
                             HTTP/1.1 200 OK
                             ontent-Type: text/html
