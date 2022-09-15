@@ -18,7 +18,7 @@ public class Client {
         HttpResponse<String> response = client.send(req, HttpResponse.BodyHandlers.ofString());
         String body = response.body();
         body.lines()
-                .limit(5)
-                .forEach(System.out::println);
+            .limit(5)
+            .forEach(System.out::println);
     }
 }
